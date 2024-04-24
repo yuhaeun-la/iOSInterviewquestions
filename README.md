@@ -1,4 +1,4 @@
-# Jercy's Interview Questions for iOS Developers
+![image](https://github.com/yuhaeun-la/iOSInterviewquestions/assets/65907001/431c78cf-badc-4519-97a4-9a85102dfbf3)# Jercy's Interview Questions for iOS Developers
 
 > 이전 질문 리스트는 [여기](https://github.com/JeaSungLEE/iOSInterviewquestions/blob/master/oldREADME.md)에서 확인할 수 있습니다.
 
@@ -242,9 +242,21 @@ UIView.animate(withDuration: 0.5) {
 10. iOS 앱에서 데이터를 저장하는 방법에는 어떤 것들이 있나요?
 
 - UserDefaults의 사용 예시와 주의 사항을 설명해주세요.
+```
+- 데이터 타입 변환: UserDefaults는 일부 제한된 데이터 타입만을 지원합니다. 기본 데이터 타입(Int, String, Bool 등)과 일부 Collection 타입(Array, Dictionary)은 지원하지만, 사용자 정의 객체는 직접 저장할 수 없습니다.
+- 보안: UserDefaults에 저장되는 데이터는 앱의 내부에 저장되기 때문에 암호화되지 않습니다. 따라서 보안에 민감한 정보(예: 비밀번호)를 저장하는 데는 적합하지 않습니다.
+- 용량 제한: UserDefaults에 저장할 수 있는 데이터의 용량에는 제한이 있으므로 대량의 데이터를 저장하는 용도로는 적합하지 않습니다.
+```
 - Keychain은 어떤 데이터를 저장하는 데 적합한가요?
+<br>Keychain은 암호화된 형태로 사용자의 중요한 데이터를 안전하게 저장하는 데 적합
 - Core Data와 SQLite의 차이점은 무엇인가요?
+```
+CoreData는 데이터를 영구적으로 저장하기 위해 다양한 방법을 제공합니다. 이 방법은 대개 Persistent Store의 형태를 결정하는 데 사용되며, 각각의 저장 방식은 다른 성능과 특징을 가지고 있습니다:
 
+SQLite Store:
+
+가장 일반적으로 사용되는 방법은 SQLite를 사용하는 것입니다. SQLite는 관계형 데이터베이스이며, 대용량 데이터를 처리하는 데 특히 유용합니다. SQLite 저장 방식을 사용하면, CoreData는 내부적으로 SQL 쿼리를 사용하여 데이터를 저장하고 검색합니다. 이 방식은 데이터를 효율적으로 저장하고, 고급 쿼리를 사용하여 복잡한 검색을 수행할 수 있게 해줍니다.
+```
 11. Swift에서 프로토콜(Protocol)이란 무엇이며, 어떻게 사용하나요?
 
 - 프로토콜의 요구 사항에는 어떤 것들이 있나요?
@@ -254,6 +266,7 @@ UIView.animate(withDuration: 0.5) {
 12. Swift의 접근 제어자(Access Control)에 대해 설명해주세요.
 
 - open과 public의 차이점은 무엇인가요?
+<br> Swift에서 "open"은 외부 모듈에서 클래스의 상속과 재정의를 허용하는 반면, "public"은 접근만을 허용하고 상속과 재정의는 허용하지 않습니다 (같은 모듈 내에서는 가능)  이는 코드의 확장성과 안정성을 고려하여 사용됩니다
 - 접근 제어자를 사용하는 이유는 무엇인가요?
 - 상속과 관련된 접근 제어자는 무엇이 있나요?
 <br>AnyObject는 클래스의 인스턴스만 저장할 수 있으므로, 참조 타입에만 사용해야 합니다.
@@ -289,6 +302,7 @@ Any는 모든 타입을 다룰 수 있으나, 실제로 어떤 타입의 데이�
 - 브랜치 충돌(Conflict) 해결 방법을 설명해주세요.
 
 16. iOS 앱에서 코어 데이터(Core Data)를 사용하는 이유는 무엇인가요?
+![image](https://github.com/yuhaeun-la/iOSInterviewquestions/assets/65907001/e01af723-951f-4a59-841c-1405df12a3c0)
 
 - 코어 데이터의 주요 구성 요소(Entity, Attribute, Relationship 등)를 설명해주세요.
 - 코어 데이터에서 데이터를 가져오는 방법(Fetch Request)에 대해 설명해주세요.
@@ -297,8 +311,20 @@ Any는 모든 타입을 다룰 수 있으나, 실제로 어떤 타입의 데이�
 17. Swift의 high-order functions에 대해 설명해주세요.
 
 - map()과 compactMap()의 차이점은 무엇인가요?
+<br> **map() 함수**는 컬렉션의 각 요소에 대해 특정 작업을 수행하고 그 결과로 새로운 컬렉션을 반환합니다. 이 함수는 주어진 변환을 모든 요소에 적용하며, 변환 결과에 따라 nil을 포함할 수 있는 새 배열을 생성합니다.
+<br> **compactMap() 함수**는 map()과 유사하게 작동하지만, 결과 배열에서 nil을 제거합니다. 이 함수는 옵셔널 값을 반환하는 변환에 유용하며, 변환 과정에서 발생할 수 있는 nil을 자동으로 필터링합니다.
 - filter()와 reduce()는 어떤 경우에 사용하나요?
+<br>reduce() 함수는 컬렉션의 모든 요소를 하나의 값으로 결합하는 데 사용됩니다. 이 함수는 초기값과 결합 규칙을 받아 컬렉션을 순회하면서 하나의 값으로 합칩니다.
+```swift
+let numbers = [1, 2, 3, 4]
+let sum = numbers.reduce(0, { $0 + $1 })  // 결과: 10
+```
 - flatMap()을 사용하는 경우를 예시로 들어주세요.
+<br> flatMap() 함수는 중첩된 컬렉션들을 하나의 평평한 컬렉션으로 평탄화합니다. 이 함수는 각 요소에 대해 적용된 변환의 결과가 배열인 경우, 그 배열의 요소들을 새로운 단일 배열로 합치는데 사용됩니다.
+```swift
+let arrayOfArrays = [[1, 2, 3], [4, 5], [6]]
+let flattened = arrayOfArrays.flatMap { $0 }  // 결과: [1, 2, 3, 4, 5, 6]
+```
 
 18. Xcode에서 유용한 단축키와 생산성을 높이는 팁에 대해 설명해주세요.
 
@@ -328,6 +354,18 @@ Any는 모든 타입을 다룰 수 있으나, 실제로 어떤 타입의 데이�
 
 - Grand Central Dispatch(GCD)의 주요 개념과 사용 방법을 설명해주세요.
 - OperationQueue와 DispatchQueue의 차이점은 무엇인가요?
+```
+GCD VS OperationQueue
+Operation Queue
+
+KVO(key Value Observing)를 사용해 작업 진행 상황을 감시하는 방법이 필요할 때도 적합합니다.
+동시에 실행할 수 있는 Operation의 최대 수를 지정할 수 있습니다.
+Operation을 일시 중지, 다시 시작 및 취소를 할 수 있습니다.
+
+GCD
+작업이 복잡하지 않고 간단하게 처리하거나 특정 유형의 시스템 이벤트를 비동기적으로 처리할 때 적합합니다. (예를 들면 타이머, 프로세스 등의 관련 이벤트입니다.)
+오버헤드가 있지만 사용하기 매우 간편
+```
 - 동시성 프로그래밍에서 발생할 수 있는 문제(Race Condition, Deadlock 등)와 해결 방법은 무엇인가요?
 
 2. 객체지향 프로그래밍(OOP)의 주요 개념에 대해 설명해주세요.
@@ -448,6 +486,7 @@ Any는 모든 타입을 다룰 수 있으나, 실제로 어떤 타입의 데이�
 - 키 경로와 KVO(Key-Value Observing)의 관계를 설명해주세요.
 
 20. iOS 앱에서 Deep Link와 Universal Link의 차이점은 무엇인가요?
+![image](https://github.com/yuhaeun-la/iOSInterviewquestions/assets/65907001/242ca634-f787-4652-91da-9f70713ca9fa)
 
 - Deep Link를 구현하는 방법과 주의 사항을 설명해주세요.
 - Universal Link의 동작 원리와 설정 방법은 무엇인가요?
