@@ -409,6 +409,7 @@ GCD
 
 - 의존성 주입의 세 가지 유형(Initializer Injection, Property Injection, Method Injection)을 설명해주세요.
 - 의존성 주입 컨테이너(Dependency Injection Container)란 무엇인가요?
+<br> 애플리케이션 전반에서 객체의 인스턴스를 관리할 수 있게 해주며, 의존성을 캡슐화하고 중앙에서 관리하는 방식을 제공합니다.
 - 의존성 주입을 사용함으로써 얻을 수 있는 이점은 무엇인가요?
 
 9. 델리게이션 패턴(Delegation Pattern)과 클로저의 차이점은 무엇인가요?
